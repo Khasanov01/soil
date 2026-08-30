@@ -24,4 +24,8 @@ conda create --name soil python=3.11.0
 conda create --name soil python=3.11.0 numpy
 conda activate soil
 conda deactivate
+
+pip install -r requirements.txt
+pip  install pillow
+pip freeze > requirements.txt
 ```
