@@ -29,3 +29,16 @@ pip install -r requirements.txt
 pip  install pillow
 pip freeze > requirements.txt
 ```
+
+-Install and Run Project
+
+```
+pip install fastapi[all]
+pip freeze > requirements.txt
+```
+
+```
+for Development:
+fastapi dev main.py
+fastapi dev main.py --port 5000
+```

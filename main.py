@@ -9,9 +9,6 @@ app=FastAPI(title='landing FastAPI soil project')
 
 @app.get("/")
 
-async def get_greeting(request: Request, response: Response ):
+async def get_greeting(request: Request) -> str :
     print("request:", request)
-    response.status_code=200
-    response.body= b"Hello from starlette"
-    print("response", response)
-    return response
+    return "Hello from starlette"
