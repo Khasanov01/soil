@@ -12,7 +12,7 @@ Create soil application to learn FAST API basics
 
 - Create first APIs, define response_model
 - JSON parsing, enums and params
-- Params validation & DTO validation
+- Params validation & DTO validation[Pydantic]
 
 
 ## Project Run Sources

@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Path, Query
 from fastapi import Request, Response, HTTPException
-from provider import students
+from provider import Student, students
 """FastAPI uses Starlette Framework by default"""
 
 print("\n Backend server is running \n")
@@ -20,13 +20,13 @@ async def get_message():
 
 
 #FastAPI handler JSON
-@app.get("/mit/all", response_model=dict[int, dict])
+@app.get("/mit/all", response_model=dict[int, Student])
 def get_students():
     #model>database > data
     return students
 
 # Path params
-@app.get("/mit/student/{id}", response_model=dict)
+@app.get("/mit/student/{id}", response_model=Student)
 def get_student_by_id(id : int = Path(ge=1)):
     if id not in students:
         raise HTTPException(
@@ -36,7 +36,7 @@ def get_student_by_id(id : int = Path(ge=1)):
 
 
 # Query params
-@app.get("/mit/student", response_model=list[dict])
+@app.get("/mit/student", response_model=list[Student])
 def get_student_by_name(name : str = Query(min_length=3, max_length=20)):
-    result=[s for s in students.values() if s["name"] == name ]
+    result=[s for s in students.values() if s.name == name ]
     return result
