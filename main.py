@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Path, Query
+from fastapi import FastAPI, status, Path, Query
 from fastapi import Request, Response, HTTPException
 from provider import Student, students
 """FastAPI uses Starlette Framework by default"""
@@ -40,3 +40,21 @@ def get_student_by_id(id : int = Path(ge=1)):
 def get_student_by_name(name : str = Query(min_length=3, max_length=20)):
     result=[s for s in students.values() if s.name == name ]
     return result
+
+
+
+@app.post("/mit/edit/{id}", response_model=Student)
+def edit_student(
+    id: int= Path(ge=1),
+    name: str=Query(min_length=3, max_length=20),
+    age: int=Query(gt=20)
+):
+    print(f"The path: {id=} and query: {name=} , {age=}")
+
+    if id not in students:
+        raise HTTPException(status_code=400, detail=f"Student {id=} not found")
+    
+    student = students[id]
+    student.name=name
+    student.age=age
+    return student
