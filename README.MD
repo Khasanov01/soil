@@ -10,6 +10,10 @@ Create soil application to learn FAST API basics
 - FastAPI focus on Validation, Docs and Development Process
 - Conda virtual Environment
 
+- Create first APIs, define response_model
+- JSON parsing, enums and params
+- Params validation & DTO validation
+
 
 ## Project Run Sources
 
