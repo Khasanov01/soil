@@ -12,7 +12,9 @@ Create soil application to learn FAST API basics
 
 - Create first APIs, define response_model
 - JSON parsing, enums and params
-- Params validation & DTO validation[Pydantic]
+- Params validation & DTO validation(Pydantic)
+- ASGI server(Uvicorn) vs WSGI server(gunicorn)
+- uvicorn > starlette > FastAPI
 
 
 ## Project Run Sources
@@ -45,4 +47,7 @@ pip freeze > requirements.txt
 for Development:
 fastapi dev main.py
 fastapi dev main.py --port 5000
+
+for development & production
+uvicorn main:app --port 5000 --reload
 ```

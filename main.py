@@ -1,4 +1,4 @@
-from fastapi import FastAPI, status, Path, Query
+from fastapi import Body, FastAPI, status, Path, Query
 from fastapi import Request, Response, HTTPException
 from provider import Student, students
 """FastAPI uses Starlette Framework by default"""
