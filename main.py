@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Path, Query
 from fastapi import Request, Response, HTTPException
 from provider import students
 """FastAPI uses Starlette Framework by default"""
@@ -27,7 +27,7 @@ def get_students():
 
 # Path params
 @app.get("/mit/student/{id}", response_model=dict)
-def get_student_by_id(id : int):
+def get_student_by_id(id : int = Path(ge=1)):
     if id not in students:
         raise HTTPException(
         status_code=400, detail=f"Student Id={id} not found"
@@ -37,6 +37,6 @@ def get_student_by_id(id : int):
 
 # Query params
 @app.get("/mit/student", response_model=list[dict])
-def get_student_by_name(name : str):
+def get_student_by_name(name : str = Query(min_length=3, max_length=20)):
     result=[s for s in students.values() if s["name"] == name ]
     return result
