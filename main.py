@@ -58,3 +58,13 @@ def edit_student(
     student.name=name
     student.age=age
     return student
+
+#DTO validation
+@app.post("/mit/add", response_model=Student)
+def add_student(student: Student=Body(...)):
+    print(f"the req.body: {student}")
+
+    if student.id in student:
+        raise HTTPException(status_code=400, detail= f"the student id {student.id} already exists")
+    students[student.id]=student
+    return student
